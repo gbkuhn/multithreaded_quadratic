@@ -1,9 +1,15 @@
 import java.util.*;
 import java.io.*;
-import javagently.*;
+//import javagently.*;
 import static java.lang.Double.parseDouble;
 
 class Pipe1 extends Thread {
+
+    static double a = 0.0;
+    static double b = 0.0;
+    static double c = 0.0;
+
+
     double[] array1 = new double[3];           //array for inputs
     private DataOutputStream out;
 
@@ -11,7 +17,7 @@ class Pipe1 extends Thread {
         out = new DataOutputStream(os);        //output stream to put inputs into the second class
     }
 
-    public synchronized void readCoeffs() {            //read the coefficients
+    public void prompt(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter value for a: ");
         double a = parseDouble(scanner.nextLine());
@@ -19,6 +25,10 @@ class Pipe1 extends Thread {
         double b = parseDouble(scanner.nextLine());
         System.out.println("Enter value for c: ");
         double c = parseDouble(scanner.nextLine());
+    }
+
+    public synchronized void readCoeffs() {            //read the coefficients
+        prompt();
         array1[0] = a;                                     //assign values to array
         array1[1] = b;
         array1[2] = c;

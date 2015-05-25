@@ -1,19 +1,18 @@
 import java.util.*;
 import java.io.*;
-import javagently.*;
+//import javagently.*;
 import static java.lang.Double.parseDouble;
-
 
 
 class Pipe2 extends Thread {
     double[] array2 = new double[3];
     double[] rootarray = new double[2];
-    Graph g = new Graph("Quadratic (a * x^2 + b * x + c = 0)", "x-axis", "y-axis");
+   // Graph g = new Graph("Quadratic (a * x^2 + b * x + c = 0)", "x-axis", "y-axis");
     private DataInputStream in;
     private DataOutputStream out;
     int num = 0;
 
-    public Pipe2(InputStream is, OutputStream os) {                      //input and output steam constructor to act as filter
+    public Pipe2(InputStream is, OutputStream os) {          //input and output steam constructor to act as filter
         in = new DataInputStream(is);
         out = new DataOutputStream(os);
     }
@@ -31,9 +30,12 @@ class Pipe2 extends Thread {
                 double root2;
 
                 d = Math.sqrt(b * b - 4 * a * c);    //discriminant
-                root1 = (-b + d) / (2 * a);
-                root2 = (-b - d) / (2 * a);             //root calculations
+                root1 = (-b+d)/(2*a);
+                root2 = (-b-d)/(2*a);             //root calculations
 
+                System.out.println("Root 1: "+root1);
+                System.out.println("Root 2: "+root2);
+                display_roots(root1,root2);
                 rootarray[0] = root1;
                 rootarray[1] = root2;
 
@@ -43,18 +45,26 @@ class Pipe2 extends Thread {
         }
     }
 
+    public void display_roots(double root1, double root2){
+
+        System.out.println("Root 1: "+root1);
+        System.out.println("Root 2: "+root2);
+
+    }
+
     public synchronized void drawGraph(int arg) {
+       /*
         g.setSymbol(true);
         g.setSymbol(3);
         g.setColor(2);
+        */
         for (int z = 0; z < arg; z++) {
             for (int y = 0; y < rootarray.length; y++) {        //assign values for graph
-                g.add(z, rootarray[z]);
+               //g.add(z, rootarray[z]);
+                System.out.println("Z value: "+z);
             }
         }
-
-        g.showGraph();  //display graph
-
+        //g.showGraph();  //display graph
     }
 
 

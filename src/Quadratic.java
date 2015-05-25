@@ -1,13 +1,13 @@
 import java.util.*;
 import java.io.*;
-import javagently.*;
+//import javagently.*;
 import static java.lang.Double.parseDouble;
 
 
 public class Quadratic {
 
     public static void main(String args[]) throws InterruptedException {
-        int arg = Integer.parseInt(args[0]);        //parse in command line argument
+        int arg = Integer.parseInt(args[0]);        //parse in command line argument, amount of times the program will run
         try {
             for (int x = 0; x < arg; x++) {
                 PipedOutputStream pipeout1 = new PipedOutputStream();           //lining up the pipes end to end

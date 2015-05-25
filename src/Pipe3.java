@@ -1,7 +1,7 @@
 
 import java.util.*;
 import java.io.*;
-import javagently.*;
+//import javagently.*;
 import static java.lang.Double.parseDouble;
 
 class Pipe3 extends Thread {
