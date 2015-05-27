@@ -20,11 +20,11 @@ class Pipe1 extends Thread {
     public void prompt(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter value for a: ");
-        double a = parseDouble(scanner.nextLine());
+        a = parseDouble(scanner.nextLine());
         System.out.println("Enter value for b: ");
-        double b = parseDouble(scanner.nextLine());
+        b = parseDouble(scanner.nextLine());
         System.out.println("Enter value for c: ");
-        double c = parseDouble(scanner.nextLine());
+        c = parseDouble(scanner.nextLine());
     }
 
     public synchronized void readCoeffs() {            //read the coefficients

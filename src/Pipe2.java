@@ -11,6 +11,9 @@ class Pipe2 extends Thread {
     private DataInputStream in;
     private DataOutputStream out;
     int num = 0;
+    double d;              //discriminant
+    double root1;
+    double root2;
 
     public Pipe2(InputStream is, OutputStream os) {          //input and output steam constructor to act as filter
         in = new DataInputStream(is);
@@ -25,17 +28,14 @@ class Pipe2 extends Thread {
                 double b = array2[1];
                 double c = array2[2];
 
-                double d;              //discriminant
-                double root1;
-                double root2;
 
                 d = Math.sqrt(b * b - 4 * a * c);    //discriminant
                 root1 = (-b+d)/(2*a);
                 root2 = (-b-d)/(2*a);             //root calculations
-
+/*
                 System.out.println("Root 1: "+root1);
                 System.out.println("Root 2: "+root2);
-                display_roots(root1,root2);
+                */
                 rootarray[0] = root1;
                 rootarray[1] = root2;
 
@@ -43,6 +43,9 @@ class Pipe2 extends Thread {
 
         } catch (Exception e) {
         }
+
+        display_roots(root1,root2);
+
     }
 
     public void display_roots(double root1, double root2){
