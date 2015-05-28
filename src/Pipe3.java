@@ -21,13 +21,15 @@ class Pipe3 extends Thread {
 
             for (int i = 0; i <= 2; i++) {                              //takes in the coefficients
                 array3[i] = in.readDouble();
+                System.out.println("coeff_"+i+": "+array3[i]);
             }
             for (int i = 0; i <= 1; i++) {
-                rootarray[i] = in.readDouble();                                //takes in the roots
+                rootarray[i] = in.readDouble();
+                System.out.println("root_"+i+": "+rootarray[i]); //takes in the roots
             }
 
-            boolean check1 = Double.isNaN(rootarray[0]);
-            boolean check2 = Double.isNaN(rootarray[1]);
+            check1(rootarray[0]);
+            check1(rootarray[1]);
 
             if (check1 || check2) {
                 System.out.println("For coefficients:");                                       //prints to results.dat in same directory
@@ -39,6 +41,24 @@ class Pipe3 extends Thread {
         } catch (IOException e) {
             System.out.println("PIPE3: " + e);
         }
+    }
+
+    public boolean check1(double root_param){
+        if(Double.isNaN(rootarray[0])){
+            check1 = true;
+        }else{
+            check1=false;
+        }
+        return check1;
+    }
+
+    public boolean check2(double root_param2){
+        if(Double.isNaN(rootarray[1])){
+            check2 = true;
+        }else{
+            check2=false;
+        }
+        return check2;
     }
 
     public void run() {
